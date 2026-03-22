@@ -60,9 +60,10 @@ async def zalo_webhook(
     # For now, use a default broker or get from context
     broker_id = os.getenv('DEFAULT_BROKER_ID', 'default_broker')
     
-    # Get authenticated client for this broker (optional for webhook testing)
+    # Get authenticated client for this broker
     broker_client = auth_manager.get_client_for_broker(broker_id, app_id, app_secret)
-    # Continue even without token for webhook verification
+    if not broker_client:
+        return {"status": "error", "reason": "broker_not_authenticated"}
     
     # Process message through agents (imported from main app)
     from main import listener, strategist, closer
@@ -96,12 +97,10 @@ async def zalo_webhook(
         suggestions = [s.message for s in suggestions_obj]
     
     # Send first suggestion automatically (or wait for broker approval)
-    # For MVP WITHOUT access token: just log it, don't send
+    # For MVP, let's send it automatically
     if suggestions:
         best_suggestion = suggestions[0]
-        print(f"🤖 AI Suggestion for {user_id}: {best_suggestion}")
-        # Uncomment when you have access token:
-        # broker_client.send_message(user_id, best_suggestion)
+        broker_client.send_message(user_id, best_suggestion)
     
     return {
         "status": "success",
