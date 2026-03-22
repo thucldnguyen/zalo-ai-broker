@@ -12,6 +12,8 @@ venv/
 data/leads/
 *.json
 !templates/*.json
+!.planning/**/*.json
+!.planning/*.json
 
 # IDE
 .vscode/
