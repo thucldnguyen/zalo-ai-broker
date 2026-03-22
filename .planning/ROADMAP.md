@@ -11,12 +11,11 @@
 
 **Requirements covered:** LLM-01, LLM-02, LLM-03, LLM-04, TEST-01, TEST-02, TEST-03, ENV-01, ENV-02
 
-### Plans
+**Plans:** 2 plans
 
-1. **Audit LLM code** — Review `core/llm/` for correctness: provider retry logic, tool schemas, message builders, schema validation
-2. **Test LLM paths** — Write/fix mocked tests for ListenerAgent and CloserAgent LLM paths; ensure all tests pass
-3. **Verify env config** — Confirm `.env.example` documents all LLM vars; verify startup logging shows correct mode
-4. **Commit & integrate** — Stage and commit `core/llm/`, modified agents, main.py; verify clean git state
+Plans:
+- [ ] 01-01-PLAN.md — Fix log format, verify tests and env config
+- [ ] 01-02-PLAN.md — Stage and commit LLM integration files
 
 **Success criteria:**
 - `pytest tests/ -v` passes 100%
