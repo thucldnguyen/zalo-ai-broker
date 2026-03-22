@@ -10,6 +10,12 @@ Usage:
     uvicorn main:app --reload
 """
 
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -29,6 +35,13 @@ app = FastAPI(
     description="AI-powered assistant for Vietnamese real estate brokers",
     version="0.1.0"
 )
+
+# Include Zalo webhook routes
+try:
+    from integrations.zalo_routes import router as zalo_router
+    app.include_router(zalo_router)
+except ImportError:
+    print("Warning: Zalo integration not available")
 
 # Initialize storage
 lead_store = LeadStore()

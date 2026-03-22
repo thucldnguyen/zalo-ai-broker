@@ -11,6 +11,8 @@ redis==5.0.1
 
 # Utilities
 python-dateutil==2.8.2
+python-dotenv==1.0.0
+requests==2.31.0
 
 # Development
 pytest==7.4.3
