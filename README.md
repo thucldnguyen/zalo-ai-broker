@@ -139,6 +139,15 @@ curl http://localhost:8000/lead/customer_001
 
 ## Vietnamese NLP Features
 
+### LLM-Powered Intelligence (Optional)
+
+When `ANTHROPIC_API_KEY` is configured, the system uses Claude for:
+- **Smarter extraction**: Better handling of complex Vietnamese phrasing
+- **Contextual replies**: Personalized suggestions based on conversation history
+- **Graceful fallback**: Automatically uses rule-based heuristics if LLM unavailable
+
+Set `ANTHROPIC_API_KEY` in `.env` to enable (see `.env.example`).
+
 ### Budget Extraction
 - "tầm 2-3 tỷ" → 2,000,000,000 - 3,000,000,000 VND
 - "khoảng 500 triệu" → 425,000,000 - 575,000,000 VND
