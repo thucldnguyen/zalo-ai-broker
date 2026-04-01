@@ -53,8 +53,8 @@ def main():
     extracted = result1['extracted_data']
     print(f"  Budget: {extracted['budget_min']:,} - {extracted['budget_max']:,} VND")
     print(f"  Locations: {', '.join(extracted['locations'])}")
-    print(f"  Intent: {extracted['intent']['value']}")
-    print(f"  Interest Level: {extracted['interest_level']['value']}")
+    print(f"  Intent: {extracted['intent']}")
+    print(f"  Interest Level: {extracted['interest_level']}")
     
     print("\n🎯 Recommended Action:")
     action = result1['action']
